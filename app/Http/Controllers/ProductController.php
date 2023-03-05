@@ -6,10 +6,19 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    
+    public function __construct()
+    {
+        $this->middleware('auth');  
+    }
+
+    public function index()
+    {
+        return view('admin.products.index');
+    }
+
     public function create()
     {
-        # code...
+        return view('admin.products.create');
     }
 
     public function store()
