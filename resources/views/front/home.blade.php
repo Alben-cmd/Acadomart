@@ -13,8 +13,8 @@
                     <div class="container">
                         <div class="slideshow-content slideshow-overlay middle d-flex justify-content-center align-items-center">
                             <div class="slideshow-content-in text-center">
-                                <div class="wrap-caption animation style1 px-2" style="opacity: 0.5">
-                                    <h2 class="h1 mega-title ss-mega-title fs-1 text-capitalize text-white" style="background-color:rgb(129, 108, 108);">Entreprenuership Centre, <br> Federal University of Technology, Minna.</h2>
+                                <div class="wrap-caption animation style1 px-2" >
+                                    <h2 class="h1 mega-title ss-mega-title fs-1 text-capitalize text-white" style="background-color:rgb(125, 108, 129); opacity: 0.5">Entreprenuership Centre, <br> Federal University of Technology, Minna.</h2>
                                     <!-- <span class="mega-subtitle fs-6 ss-sub-title d-md-block d-lg-block d-none">Turning Academic Ideas into Viable Businesses and Ventures</span> -->
                                     <!-- <div class="ss-btnWrap mt-3 mt-md-0">
                                         <a class="btn btn-lg border-0 btn-primary" href="shop-top-filter.html">Shop Women</a>

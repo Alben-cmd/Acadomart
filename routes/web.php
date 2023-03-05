@@ -22,6 +22,10 @@ use App\Http\Controllers\FrontController;
 Route::get('/', [FrontController::class, 'index'])->name('home');
 Route::get('/product', [FrontController::class, 'product'])->name('product');
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Auth::routes();
+//admin section
+Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('admin');
+Route::get('/admin/category', [App\Http\Controllers\HomeController::class, 'category'])->name('admin.category');
