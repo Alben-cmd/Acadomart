@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->integer('business_id');
             $table->string('name');
+            $table->string('slug');
             $table->string('description');
             $table->float('price', 9, 2);
             $table->string('cover_image')->nullable();

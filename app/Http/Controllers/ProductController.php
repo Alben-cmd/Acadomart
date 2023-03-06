@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Business;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Str;
+use Image;
+
 
 class ProductController extends Controller
 {
@@ -15,13 +19,14 @@ class ProductController extends Controller
     
     public function index()
     {
-        $product = Product::get();
-        return view('admin.products', compact('product'));
+        $products = Product::get();
+        return view('admin.products.index', compact('products'));
     }
 
     public function create()
     {
-        return view('admin.products.create');
+        $businesses = Business::all();
+        return view('admin.products.create', compact('businesses'));
     }
 
     public function store(Request $request)
@@ -32,10 +37,11 @@ class ProductController extends Controller
             'description' => 'required',
             'price' => 'required',
             'cover_image'  => 'required',
+            'business' => 'required',
 
             ]);
 
-           $path = public_path().'/images/product/'; 
+           $path = public_path().'/images/products/'; 
             // create folder; images/product    
            $originalImage = $request->file('cover_image');
            $name = time().$originalImage->getClientOriginalName();
@@ -45,31 +51,27 @@ class ProductController extends Controller
            
            $product = new Product();
 
-           $product->image=$name;
-           $product->name =$request->name; 
-        // $product->slug = Str::slug($product->name);
+           $product->cover_image = $name;
+           $product->name = $request->name; 
+           $product->business_id = $request->business;
+           $product->slug = Str::slug($request->name);
            $product->description = $request->description;
            $product->price = $request->price;
            $product->save();
 
-           return redirect()->back()->with('success', 'product Added!');
+           return redirect()->back()->with('message', 'product Added!');
    }
 
-   public function show($id)
-    {
-        $product = Product::find($id);        
-        return view('admin.single_product', compact('product'));
+    public function edit($slug)
+    {   
+        $businesses = Business::all();
+        $product = Product::where('slug', $slug)->first();
+        return view('admin.products.edit', compact('businesses','product'));
     }
 
-    public function edit($id)
+    public function update(Request $request, $slug)
     {
-        $product = Product::find($id);
-        return view('admin.edit_product', compact('product'));
-    }
-
-    public function update(Request $request, $id)
-    {
-        $product = Product::find($id);
+        $product = Product::where('slug', $slug)->first();
 
         $validatedData = $request->validate([
 
@@ -86,23 +88,23 @@ class ProductController extends Controller
         $image = Image::make($originalImage);
         $image->resize(270, 310);
         $image->save($path.$name); 
-        $product->image = $name; 
+        $product->cover_image = $name; 
         }    
         
 
-        $product->name =$request->name; 
-        // $product->slug = $request->slug;
+        $product->name = $request->name; 
+        $product->slug = Str::slug($request->name);
         $product->description = $request->description;
         $product->price = $request->price;
 
         $product->save(); 
 
-        return redirect()->route('admin.product')->with('success', 'Product Updated!');
+        return redirect()->route('products')->with('message', 'Product Updated!');
     }
 
     public function destroy($id)
     {
         Product::where('id', $id)->delete();   
-        return redirect()->route('admin.product')->with('success', 'Product Deleted!');
+        return redirect()->route('products')->with('message', 'Product Deleted!');
     }
 }

@@ -4,7 +4,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-4 footer-about mb-4 mb-lg-0">
-                    <img src="{{ asset('default/assets/images/ftr-logo-demo2.png')}}" alt="Acadomart" class="mb-3"/>
+                <h1 class="text-light">ACADOMART</h1>    
+                <!-- <img src="{{ asset('default/assets/images/ftr-logo-demo2.png')}}" alt="Acadomart" class="mb-3"/> -->
                     <p class="mb-1">Turning academic ideas into viable Businesses and Ventures.</p>
                 </div>
                 <div class="col-12 col-sm-12 col-md-4 col-lg-2 footer-links">

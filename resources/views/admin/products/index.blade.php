@@ -9,19 +9,39 @@
                 </div>
 
                 <div class="card-body">
-                <table class="table table-striped">
-                    <thead>     
-                        <tr>
-                            <th></th>
-                        </tr>
-                    </thead>
+                    @if(Session::has('message'))
+                        <div class="alert alert-success">
+                            {{ Session::get('message') }}
+                        </div>
+                    @endif
+                    
+                    <table class="table table-striped">
+                        <thead>     
+                            <tr>
+                                <th>#</th>
+                                <th>Product Name</th>
+                                <th>Description</th>
+                                <th>Owner</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
 
-                    <tbody> 
-                        <tr>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
+                        <tbody> 
+                            @foreach($products as $key => $product)
+                                <tr>
+                                    <td>{{ $key+1 }}</td>
+                                    <td>{{ $product->name }}</td>
+                                    <td>{{ $product->description }}</td>
+                                    <td>Owner</td>
+                                    <td>
+                                        <a href="{{ route('edit.product', ['slug' => $product->slug]) }}">Edit</a>
+                                        |
+                                        <a href="http://" class="text-danger">Delete</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
