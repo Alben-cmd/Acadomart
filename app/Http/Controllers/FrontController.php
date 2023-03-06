@@ -2,13 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Business;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
 {
     public function index()
     {
-        return view('front.home');
+        $businesses = Business::all();
+        return view('front.home', compact('businesses'));
+    }
+
+    public function show($slug)
+    {
+        $business = Business::where('slug', $slug)->first();
+        return view('front.products', compact('business'));
     }
 
     public function product()

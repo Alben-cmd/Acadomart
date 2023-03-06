@@ -16,7 +16,8 @@
                         <button type="button" class="btn--link site-header__menu js-mobile-nav-toggle mobile-nav--open me-3 d-lg-none"><i class="icon an an-times-l"></i><i class="icon an an-bars-l"></i></button>
                         <!--End Mobile Toggle-->
                         <!--Logo-->
-                        <div class="logo"><a href="/"><img class="logo-img mh-100" src="{{ asset('default/assets/images/logo-demo2.png')}}" alt="Acadomart" title="Acadomart" width="140" /><span class="logo-txt d-none">Acadomart</span></a></div>
+                        <h1>ACADOMART</h1>
+                        <!-- <div class="logo"><a href="/"><img class="logo-img mh-100" src="{{ asset('default/assets/images/logo-demo2.png')}}" alt="Acadomart" title="Acadomart" width="140" /><span class="logo-txt d-none">Acadomart</span></a></div> -->
                         <!--End Logo-->
                     </div>
                     <!--End Logo / Menu Toggle-->

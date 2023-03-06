@@ -16,8 +16,8 @@ class BusinessController extends Controller
 
     public function index()
     {
-        $business = Business::get();
-        return view('admin.business', compact('business'));
+        $businesses = Business::get();
+        return view('admin.business.index', compact('businesses'));
     }
 
     public function create()
@@ -26,7 +26,8 @@ class BusinessController extends Controller
     }
 
     public function store(Request $request)
-    {
+    {   
+        // dd($request);
         $validatedData = $request->validate([
 
             'name' => 'required',
@@ -45,30 +46,29 @@ class BusinessController extends Controller
            
            $business = new Business();
 
-           $business->image=$name;
+           $business->cover_image= $name;
            $business->name =$request->name; 
            $business->slug = Str::slug($business->name);
            $business->address = $request->address;
+            
+           if ($request->filled('link')) {
+            $business->link = $request->link;
+           }
+
            $business->save();
 
-           return redirect()->back()->with('success', 'Business Added!');
+           return redirect()->back()->with('message', 'Business Added! Would you like to add a new business?');
    }
 
-   public function show($id)
+    public function edit($slug)
     {
-        $business = Business::find($id);        
-        return view('admin.single_business', compact('business'));
+        $business = Business::where('slug', $slug)->first();     
+        return view('admin.business.edit', compact('business'));
     }
 
-    public function edit($id)
+    public function update(Request $request, $slug)
     {
-        $business = Business::find($id);
-        return view('admin.edit_business', compact('business'));
-    }
-
-    public function update(Request $request, $id)
-    {
-        $business = Business::find($id);
+        $business = Business::where('slug', $slug)->first(); 
 
         $validatedData = $request->validate([
 
@@ -76,25 +76,28 @@ class BusinessController extends Controller
             'address' => 'required',
 
              ]);
+            
+        if($request->filled('link')){
+            $business->link = $request->link;
+        }
 
         if ($request->has('cover_image')) {
-        $path = public_path().'/images/business/';      
-        $originalImage = $request->file('cover_image');
-        $name = time().$originalImage->getClientOriginalName();
-        $image = Image::make($originalImage);
-        $image->resize(270, 310);
-        $image->save($path.$name); 
-        $business->image = $name; 
+            $path = public_path().'/images/business/';      
+            $originalImage = $request->file('cover_image');
+            $name = time().$originalImage->getClientOriginalName();
+            $image = Image::make($originalImage);
+            $image->resize(270, 310);
+            $image->save($path.$name); 
+            $business->cover_image = $name; 
         }    
-        
 
         $business->name =$request->name; 
-        $business->slug = $request->slug;
+        $business->slug = Str::slug($request->name);
         $business->address = $request->address;
 
         $business->save(); 
 
-        return redirect()->route('admin.business')->with('success', 'Business Updated!');
+        return redirect()->route('businesses')->with('message', 'Business Updated!');
     }
 
     public function destroy($id)
