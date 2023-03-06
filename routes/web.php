@@ -25,6 +25,9 @@ use App\Models\Business;
 Route::get('/', [FrontController::class, 'index'])->name('home');
 Route::get('/product', [FrontController::class, 'product'])->name('product');
 
+
+
+
 Auth::routes();
 
 // Admin Routes
