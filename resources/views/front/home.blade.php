@@ -46,16 +46,17 @@
                     <div id="tab1" class="tab_content">
                         <div class="grid-products">
                             <div class="row">
+                                @foreach($businesses as $key => $business)
                                 <div class="col-6 col-sm-6 col-md-4 col-lg-3 item">
                                     <!-- start product image -->
                                     <div class="product-image">
                                         <!-- start product image -->
                                         <a href="product-layout1.html" class="product-img">
                                             <!-- image -->
-                                            <img class="primary blur-up lazyload" data-src="{{ asset('default/assets/images/products/product-1.jpg')}}" src="{{ asset('default/assets/images/products/product-1.jpg')}}" alt="image" title="">
+                                            <img class="primary blur-up lazyload" data-src="{{ asset('images/business/'.$business->cover_image) }}" src="{{ asset('images/business/'.$business->cover_image) }}" alt="image" title="">
                                             <!-- End image -->
                                             <!-- Hover image -->
-                                            <img class="hover blur-up lazyload" data-src="{{ asset('default/assets/images/products/product-1-1.jpg')}}" src="{{ asset('default/assets/images/products/product-1-1.jpg')}}" alt="image" title="">
+                                            <img class="hover blur-up lazyload" data-src="{{ asset('images/business/'.$business->cover_image) }}" src="{{ asset('images/business/'.$business->cover_image) }}" alt="image" title="">
                                             <!-- End hover image -->
                                             <!-- product label -->
                                         
@@ -68,9 +69,9 @@
                                             <ul>
                                                 <li>
                                                     <!--Cart Button-->
-                                                    <a class="btn-icon btn btn-addto-cart pro-addtocart-popup" href="#pro-addtocart-popup">
+                                                    <!-- <a class="btn-icon btn btn-addto-cart pro-addtocart-popup" href="#pro-addtocart-popup">
                                                         <i class="icon an an-cart-l"></i> <span class="tooltip-label">Contact</span>
-                                                    </a>
+                                                    </a> -->
                                                     <!--end Cart Button-->
                                                 </li>
                                             </ul>
@@ -82,24 +83,26 @@
                                     <div class="product-details text-left">
                                         <!-- product name -->
                                         <div class="product-name">
-                                            <a href="product-layout1.html">Martha Knit Top</a>
+                                            <a href="product-layout1.html">{{ $business->name }}</a>
                                         </div>
                                         <!-- End product name -->
                                         <!-- product price -->
                                         <div class="product-price">
                                             <!-- <span class="old-price">$199.00</span> -->
-                                            <span class="price">$219.00</span>
+                                            <!-- <span class="price">$219.00</span> -->
                                         </div>
                                        
                                         
                                     </div>
                                     <!-- End product details -->
+                                    <div class="view-collection text-center mt-3 mt-md-4">
+                                        <a href="{{ route('show.business', ['slug' => $business->slug]) }}" class="btn btn-primary">View Business</a>
+                                    </div>
                                 </div> 
+                                @endforeach
                             </div>
                         </div>
-                        <!-- <div class="view-collection text-center mt-3 mt-md-4">
-                            <a href="shop-top-filter.html" class="btn btn-primary">View Collection</a>
-                        </div> -->
+                            
                     </div>
                 </div>
             </div>

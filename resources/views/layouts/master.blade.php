@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="description">
         <!-- Title Of Site -->
-        <title>Home Demo2 - Optimal Multipurpose eCommerce Bootstrap 5 Html Template</title>
+        <title>AgroMart</title>
         <!-- Favicon -->
         <link rel="shortcut icon" href="{{ asset('default/assets/images/favicon.png')}}" />
         <!-- Plugins CSS -->

@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\BusinessController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\ProductController;
+use App\Models\Business;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,12 +23,30 @@ use App\Http\Controllers\FrontController;
 // });
 
 Route::get('/', [FrontController::class, 'index'])->name('home');
+Route::get('/business/{slug}', [FrontController::class, 'show'])->name('show.business');
 Route::get('/product', [FrontController::class, 'product'])->name('product');
 
 
 
 
 Auth::routes();
-//admin section
-Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('admin');
-Route::get('/admin/category', [App\Http\Controllers\HomeController::class, 'category'])->name('admin.category');
+
+// Admin Routes
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group([], function(){
+    // Business Routes
+    Route::get('/businesses', [BusinessController::class, 'index'])->name('businesses');
+    Route::get('/add-business', [BusinessController::class, 'create'])->name('add.business');
+    Route::post('/add-business', [BusinessController::class, 'store'])->name('store.business');
+    Route::get('/edit-business/{slug}', [BusinessController::class, 'edit'])->name('edit.business');
+    Route::post('/edit-business/{slug}', [BusinessController::class, 'update'])->name('update.business');
+
+
+    // Product Routes
+    Route::get('/products', [ProductController::class, 'index'])->name('products');
+    Route::get('/add-product', [ProductController::class, 'create'])->name('add.product');
+    Route::post('/add-product', [ProductController::class, 'store'])->name('store.product');
+    Route::get('/edit-product/{slug}', [ProductController::class, 'edit'])->name('edit.product');
+    Route::post('/edit-product/{slug}', [ProductController::class, 'update'])->name('update.product');
+});
