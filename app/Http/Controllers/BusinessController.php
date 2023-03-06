@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Business;
+use App\Models\Business;
+use Illuminate\Support\Str;
+use Image;
 
 class BusinessController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');  
+    }
 
     public function index()
     {
@@ -16,7 +22,7 @@ class BusinessController extends Controller
 
     public function create()
     {
-        return view('admin.add_business');
+        return view('admin.business.create');
     }
 
     public function store(Request $request)

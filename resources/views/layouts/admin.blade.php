@@ -82,15 +82,15 @@
                     <ul class="list-group">
                         <li class="list-group-item bg-light">Navigation</li>
                         <li class="list-group-item">
-                            <a href="http://">Home</a>
+                            <a href="/home">Home</a>
                         </li>
 
                         <li class="list-group-item">
-                            <a href="http://">Business</a>
+                            <a href="{{ route('businesses') }}">Business</a>
                         </li>
 
                         <li class="list-group-item">
-                            <a href="http://">Products</a>
+                            <a href="{{ route('products') }}">Products</a>
                         </li>
                         
                     </ul>

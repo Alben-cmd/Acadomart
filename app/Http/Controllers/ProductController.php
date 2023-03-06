@@ -3,20 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');  
+    }
 
+    
     public function index()
     {
         $product = Product::get();
-        return view('admin.product', compact('product'));
+        return view('admin.products', compact('product'));
     }
 
     public function create()
     {
-        return view('admin.add_product');
+        return view('admin.products.create');
     }
 
     public function store(Request $request)
