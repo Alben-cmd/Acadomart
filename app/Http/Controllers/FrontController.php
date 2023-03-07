@@ -9,7 +9,7 @@ class FrontController extends Controller
 {
     public function index()
     {
-        $businesses = Business::all();
+        $businesses = Business::where('status', 1)->get();
         return view('front.home', compact('businesses'));
     }
 

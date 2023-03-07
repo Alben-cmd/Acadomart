@@ -51,7 +51,7 @@
                                     <!-- start product image -->
                                     <div class="product-image">
                                         <!-- start product image -->
-                                        <a href="product-layout1.html" class="product-img">
+                                        <a href="#" class="product-img">
                                             <!-- image -->
                                             <img class="primary blur-up lazyload" data-src="{{ asset('images/business/'.$business->cover_image) }}" src="{{ asset('images/business/'.$business->cover_image) }}" alt="image" title="">
                                             <!-- End image -->
@@ -83,7 +83,7 @@
                                     <div class="product-details text-left">
                                         <!-- product name -->
                                         <div class="product-name">
-                                            <a href="product-layout1.html">{{ $business->name }}</a>
+                                            <a href="#">{{ $business->name }}</a>
                                         </div>
                                         <!-- End product name -->
                                         <!-- product price -->
@@ -96,7 +96,11 @@
                                     </div>
                                     <!-- End product details -->
                                     <div class="view-collection text-center mt-3 mt-md-4">
-                                        <a href="{{ route('show.business', ['slug' => $business->slug]) }}" class="btn btn-primary">View Business</a>
+                                        @if($business->link == "")
+                                            <a href="{{ route('show.business', ['slug' => $business->slug]) }}" class="btn btn-primary">View Business</a>
+                                        @else
+                                            <a href="{{ $business->link }}" target="_blank" class="btn btn-primary">View Business</a>
+                                        @endif
                                     </div>
                                 </div> 
                                 @endforeach

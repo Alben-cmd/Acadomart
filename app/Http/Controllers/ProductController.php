@@ -102,9 +102,19 @@ class ProductController extends Controller
         return redirect()->route('products')->with('message', 'Product Updated!');
     }
 
-    public function destroy($id)
+    public function enable($slug)
     {
-        Product::where('id', $id)->delete();   
-        return redirect()->route('products')->with('message', 'Product Deleted!');
+        $product = Product::where('slug', $slug)->first();
+        $product->status = 1;
+        $product->save();   
+        return redirect()->route('products')->with('message', 'Product Enabled!');
+    }
+
+    public function disable($slug)
+    {
+        $product = Product::where('slug', $slug)->first();
+        $product->status = 0;
+        $product->save();   
+        return redirect()->route('products')->with('message', 'Product Disabled!');
     }
 }
