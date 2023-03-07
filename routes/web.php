@@ -41,6 +41,8 @@ Route::group([], function(){
     Route::post('/add-business', [BusinessController::class, 'store'])->name('store.business');
     Route::get('/edit-business/{slug}', [BusinessController::class, 'edit'])->name('edit.business');
     Route::post('/edit-business/{slug}', [BusinessController::class, 'update'])->name('update.business');
+    Route::get('/enable-business/{slug}', [BusinessController::class, 'enable'])->name('enable.business');
+    Route::get('/disable-business/{slug}', [BusinessController::class, 'disable'])->name('disable.business');
 
 
     // Product Routes
@@ -49,4 +51,6 @@ Route::group([], function(){
     Route::post('/add-product', [ProductController::class, 'store'])->name('store.product');
     Route::get('/edit-product/{slug}', [ProductController::class, 'edit'])->name('edit.product');
     Route::post('/edit-product/{slug}', [ProductController::class, 'update'])->name('update.product');
+    Route::get('/enable-product/{slug}', [ProductController::class, 'enable'])->name('enable.product');
+    Route::get('/disable-product/{slug}', [ProductController::class, 'disable'])->name('disable.product');
 });

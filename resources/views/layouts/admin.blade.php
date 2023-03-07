@@ -78,24 +78,28 @@
         <main class="py-4">
             <div class="container-fluid">
                 <div class="row justify-content-center">
-                <div class="col-md-2">
-                    <ul class="list-group">
-                        <li class="list-group-item bg-light">Navigation</li>
-                        <li class="list-group-item">
-                            <a href="/home">Home</a>
-                        </li>
+                    <div class="col-md-2">
+                        <ul class="list-group">
+                            <li class="list-group-item bg-light">Navigation</li>
+                            <li class="list-group-item">
+                                <a href="/home">Home</a>
+                            </li>
 
-                        <li class="list-group-item">
-                            <a href="{{ route('businesses') }}">Business</a>
-                        </li>
+                            <li class="list-group-item">
+                                <a href="{{ route('businesses') }}">Business</a>
+                            </li>
 
-                        <li class="list-group-item">
-                            <a href="{{ route('products') }}">Products</a>
-                        </li>
-                        
-                    </ul>
-                </div>
-                @yield('content')
+                            <li class="list-group-item">
+                                <a href="{{ route('products') }}">Products</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    
+                    <div class="col-md-10">
+                        @yield('content')
+                    </div>
+                
                 </div>
             </div>
         </main>

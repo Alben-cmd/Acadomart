@@ -16,7 +16,7 @@ class BusinessController extends Controller
 
     public function index()
     {
-        $businesses = Business::get();
+        $businesses = Business::all();
         return view('admin.business.index', compact('businesses'));
     }
 
@@ -100,9 +100,19 @@ class BusinessController extends Controller
         return redirect()->route('businesses')->with('message', 'Business Updated!');
     }
 
-    public function destroy($id)
+    public function enable($slug)
     {
-        business::where('id', $id)->delete();   
-        return redirect()->route('admin.business')->with('success', 'Business Deleted!');
+        $business = Business::where('slug', $slug)->first();
+        $business->status = 1;
+        $business->save();   
+        return redirect()->route('businesses')->with('message', 'Business Enabled!');
+    }
+
+    public function disable($slug)
+    {
+        $business = Business::where('slug', $slug)->first();
+        $business->status = 0;
+        $business->save();   
+        return redirect()->route('businesses')->with('message', 'Business Disabled!');
     }
 }
