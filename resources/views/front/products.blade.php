@@ -50,13 +50,13 @@
                                         <div class="product-details text-left">
                                             <!-- product name -->
                                             <div class="product-name">
-                                                <a href="product-layout1.html">{{$product->name}}</a>
+                                                <a href="#">{{$product->name}}</a>
                                             </div>
                                             <!-- End product name -->
                                             <!-- product price -->
                                             <div class="product-price">
                                                 <!-- <span class="old-price">$199.00</span> -->
-                                                <span class="price">$219.00</span>
+                                                <span class="price">&#8358;{{ $product->price }}</span>
                                             </div>
                                         
                                             
