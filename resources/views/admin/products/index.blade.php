@@ -31,7 +31,7 @@
                         <td>{{ $key+1 }}</td>
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->description }}</td>
-                        <td>Owner</td>
+                        <td>{{$product->business->name}}</td>
                         <td>
                             <a href="{{ route('edit.product', ['slug' => $product->slug]) }}">Edit</a>
                             |

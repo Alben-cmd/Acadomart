@@ -117,7 +117,7 @@
                         <div class="user-link iconset"><i class="icon an an-user-2"></i><span class="tooltip-label">Account</span></div>
                         <div id="userLinks">
                             <ul class="user-links">
-                                <li><a href="login.html">Login</a></li>
+                                <li><a href="{{ route('login') }} ">Login</a></li>
                                 <!-- <li><a href="register.html">Sign Up</a></li>
                                 <li><a href="my-wishlist.html">Wishlist</a></li>
                                 <li><a href="compare-style1.html">Compare</a></li> -->

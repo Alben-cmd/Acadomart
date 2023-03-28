@@ -12,13 +12,21 @@
                     <div id="tab1" class="tab_content">
                         <div class="grid-products">
                             <div class="row">
+                                <div class="row">
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center about-col mb-4">
+                                        <img src="{{ asset('images/business/'.$business->cover_image) }}" alt="Optimal"  class="img-fluid" style="width:10%"/>
+                                        <p>{{$business->address }}</p>
+                                        <!-- <p class="mb-0 mb-md-3">Phone: <a href="tel:+011234567890">(+01) 123 456 7890</a> <span class="mx-1">|</span> Email: <a href="mailto:info@example.com">info@example.com</a></p> -->
+                                    </div>
+                                </div>
                                 @if($business->products->count() > 0)
+                                
                                     @foreach($business->products as $key => $product)
                                     <div class="col-6 col-sm-6 col-md-4 col-lg-3 item">
                                         <!-- start product image -->
                                         <div class="product-image">
                                             <!-- start product image -->
-                                            <a href="product-layout1.html" class="product-img">
+                                            <a href="#" class="product-img">
                                                 <!-- image -->
                                                 <img class="primary blur-up lazyload" data-src="{{ asset('images/products/'.$product->cover_image) }}" src="{{ asset('images/products/'.$product->cover_image) }}" alt="image" title="">
                                                 <!-- End image -->
@@ -37,7 +45,7 @@
                                                     <li>
                                                         <!--Cart Button-->
                                                         <a class="btn-icon btn btn-addto-cart pro-addtocart-popup" href="#pro-addtocart-popup">
-                                                            <i class="icon an an-cart-l"></i> <span class="tooltip-label">Contact</span>
+                                                            <i class="icon an an-phone-l"></i> <span class="tooltip-label">Contact</span>
                                                         </a>
                                                         <!--end Cart Button-->
                                                     </li>
@@ -57,6 +65,10 @@
                                             <div class="product-price">
                                                 <!-- <span class="old-price">$199.00</span> -->
                                                 <span class="price">&#8358;{{ $product->price }}</span>
+                                            </div>
+                                            <div class="product-price">
+                                                <!-- <span class="old-price">$199.00</span> -->
+                                                <span class="price">{{ $product->description }}</span>
                                             </div>
                                         
                                             

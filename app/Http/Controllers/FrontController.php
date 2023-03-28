@@ -15,6 +15,7 @@ class FrontController extends Controller
 
     public function show($slug)
     {
+
         $business = Business::where('slug', $slug)->first();
         return view('front.products', compact('business'));
     }

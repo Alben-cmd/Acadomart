@@ -8,6 +8,11 @@
     </div>
 
     <div class="card-body">
+        @if(Session::has('message'))
+            <div class="alert alert-success">
+                {{ Session::get('message') }}
+            </div>
+        @endif
         <form method="POST" action="{{ route('store.product') }}" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">

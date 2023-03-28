@@ -15,11 +15,10 @@ class ProductController extends Controller
     {
         $this->middleware('auth');  
     }
-
-    
+   
     public function index()
     {
-        $products = Product::get();
+        $products = Product::get();   
         return view('admin.products.index', compact('products'));
     }
 
@@ -59,7 +58,7 @@ class ProductController extends Controller
            $product->price = $request->price;
            $product->save();
 
-           return redirect()->back()->with('message', 'product Added!');
+           return redirect()->back()->with('message', 'product Added, care to add another prouct!');
    }
 
     public function edit($slug)
